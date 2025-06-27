@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>🎪 Kchun Payasito - Show de Risas y Magia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Chewy', cursive;
+      background: linear-gradient(45deg, #ffcc00, #ff66cc, #6699ff);
+      background-size: 300% 300%;
+      animation: fondo 10s ease infinite;
+      color: #fff;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    @keyframes fondo {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    header {
+      background: radial-gradient(circle, #ff0066 30%, #cc00cc 100%);
+      text-align: center;
+      padding: 60px 20px;
+      color: #fff;
+      text-shadow: 3px 3px #000;
+    }
+    header h1 {
+      font-size: 3.5em;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.3em;
+      margin-top: 10px;
+    }
+    nav {
+      background-color: #fff;
+      text-align: center;
+      padding: 15px;
+    }
+    nav a {
+      color: #ff0066;
+      text-decoration: none;
+      font-size: 20px;
+      margin: 0 15px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      transition: background 0.3s;
+    }
+    nav a:hover {
+      background: #ff0066;
+      color: #fff;
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 25px;
+      margin-top: 30px;
+      backdrop-filter: blur(10px);
+    }
+    h2 {
+      font-size: 2.5em;
+      text-align: center;
+      text-shadow: 2px 2px #000;
+      margin-bottom: 20px;
+    }
+    /* Nueva colorimetría y estilos para sección paquetes */
+    #paquetes {
+      background: linear-gradient(135deg, #ff99cc, #ffcc33, #66ccff);
+      box-shadow: 0 0 40px 5px #ff66cc;
+      border-radius: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    .paquete {
+      background: rgba(255, 255, 255, 0.85);
+      color: #222;
+      border-radius: 20px;
+      padding: 30px 25px;
+      margin: 25px 0;
+      box-shadow: 0 6px 20px rgba(255, 102, 204, 0.6);
+      border: 5px solid #ff66cc;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      animation: popIn 0.8s forwards;
+    }
+    /* Diferentes delays para el popIn */
+    .paquete:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+    .paquete:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+    .paquete:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+    .paquete:hover {
+      transform: scale(1.08) rotate(-2deg);
+      box-shadow: 0 10px 30px #ff33cc;
+      border-color: #cc0099;
+    }
+    .paquete h3 {
+      color: #cc0099;
+      font-size: 2em;
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 4px #fff;
+    }
+    .paquete ul {
+      padding-left: 20px;
+      font-weight: bold;
+      font-size: 1.15em;
+      line-height: 1.5;
+      color: #333;
+    }
+    /* Animación popIn */
+    @keyframes popIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    .boton {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 15px 30px;
+      background-color: #ff0066;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 50px;
+      box-shadow: 0 4px 10px #000;
+      font-size: 1.1em;
+      transition: transform 0.3s;
+    }
+    .boton:hover {
+      background-color: #cc00cc;
+      transform: scale(1.1);
+    }
+    .redes {
+      margin-top: 20px;
+    }
+    .redes a {
+      color: #ffe600;
+      margin: 0 10px;
+      text-decoration: none;
+      font-size: 1.4em;
+    }
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 25px;
+      margin-top: 40px;
+      font-size: 0.95em;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+      #paquetes {
+        padding: 20px 10px;
+      }
+      .paquete {
+        margin: 15px 0;
+        padding: 20px 15px;
+      }
+    }
+
+    /* Burbujas animadas */
+    .bubble {
+      position: absolute;
+      bottom: -100px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: rise 8s linear infinite;
+      filter: drop-shadow(0 0 4px #ff66cc);
+      pointer-events: none;
+    }
+    @keyframes rise {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.7;
+      }
+      80% {
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(-1200px) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    /* Fuegos artificiales animados */
+    .firework {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: explode 1s ease forwards;
+      opacity: 0;
+      box-shadow: 0 0 15px 5px #ff66cc;
+    }
+    @keyframes explode {
+      0% {
+        opacity: 1;
+        transform: scale(0);
+        box-shadow:
+          0 0 15px 5px #ff66cc,
+          0 0 0 0 #ff66cc;
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1);
+        box-shadow:
+          0 0 0 0 #ff66cc,
+          0 0 0 0 #ff66cc;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🎉 ¡Kchun Payasito!</h1>
+    <p>Magia, risas y alegría en cada fiesta 🎈</p>
+  </header>
+
+  <nav>
+    <a href="#sobre">Sobre Kchun</a>
+    <a href="#paquetes">Paquetes</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <section id="sobre">
+    <h2>🤹‍♂️ ¿Quién es Kchun?</h2>
+    <p style="text-align:center; font-size: 1.3em;">
+      Soy <strong>Kchun Payasito</strong> y me encanta llenar de diversión y carcajadas cada rincón con magia, juegos, sketchs cómicos y ¡muchas sorpresas! Mi show está pensado para que los niños (¡y grandes también!) vivan una experiencia inolvidable 🎭
+    </p>
+  </section>
+
+  <section id="paquetes">
+    <h2>🎁 Paquetes Increíbles</h2>
+
+    <div class="paquete">
+      <h3>🎈 Paquete Básico</h3>
+      <ul>
+        <li>60 min de animación</li>
+        <li>Show de magia infantil</li>
+        <li>Sketch cómico</li>
+        <li>Juegos con música</li>
+        <li>Regalitos sorpresa</li>
+      </ul>
+    </div>
+
+    <div class="paquete">
+      <h3>🎪 Súper Kchun</h3>
+      <ul>
+        <li>85 min de show con 2 payasos</li>
+        <li>Mañanitas con personaje</li>
+        <li>Taza personalizada</li>
+        <li>Magia, sketch y juegos</li>
+        <li>Lona decorativa y premios</li>
+      </ul>
+    </div>
+
+    <div class="paquete">
+      <h3>💥 Kchun Deluxe</h3>
+      <ul>
+        <li>85 min de show completo</li>
+        <li>Equilibrismo y malabares</li>
+        <li>Batucada animada (opcional)</li>
+        <li>Accesorios: globos, antifaces, collares</li>
+        <li>Lona + taza personalizada</li>
+      </ul>
+    </div>
+
+    <!-- Contenedor para burbujas -->
+    <div id="bubble-container"></div>
+  </section>
+
+  <section id="contacto" style="text-align:center;">
+    <h2>📞 ¡Reserva tu fiesta!</h2>
+    <p><strong>WhatsApp:</strong><br /><a class="boton" href="https://wa.me/5215540375837" target="_blank">Habla con Kchun</a></p>
+    <div class="redes">
+      <p>📲 Sígueme en redes:</p>
+      <a href="https://www.facebook.com/share/16hsjR7Awh/?mibextid=wwXIfr" target="_blank">📘 Facebook</a>
+      <a href="https://www.instagram.com/kchunpayasito?igsh=MXFzaHllMjU5eXlkbg==" target="_blank">📸 Instagram</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Kchun Payasito - ¡Tu mejor show infantil! 🎊
+  </footer>
+
+  <script>
+    // Generar burbujas animadas en la sección de paquetes
+    const bubbleContainer = document.getElementById('bubble-container');
+
+    function createBubble() {
+      const bubble = document.createElement('div');
+      bubble.classList.add('bubble');
+      const size = Math.random() * 20 + 20; // tamaño entre 20 y 40 px
+      bubble.style.width = size + 'px';
+      bubble.style.height = size + 'px';
+      bubble.style.left = Math.random() * 100 + '%';
+      bubble.style.animationDuration = (6 + Math.random() * 4) + 's';
+      bubbleContainer.appendChild(bubble);
+
+      setTimeout(() => {
+        bubble.remove();
+      }, 10000); // dura 10 segundos y se elimina
+    }
+    setInterval(createBubble, 800);
+
+    // Fuegos artificiales aleatorios en la sección de paquetes
+    function createFirework() {
+      const paquetes = document.getElementById('paquetes');
+      const firework = document.createElement('div');
+      firework.classList.add('firework');
+
+      // Posición aleatoria dentro de la sección paquetes
+      const x = Math.random() * paquetes.clientWidth;
+      const y = Math.random() * paquetes.clientHeight;
+
+      firework.style.left = x + 'px';
+      firework.style.top = y + 'px';
+      firework.style.width = '15px';
+      firework.style.height = '15px';
+
+      paquetes.appendChild(firework);
+
+      setTimeout(() => {
+        firework.remove();
+      }, 1000);
+    }
+    // Crear fuegos artificiales cada 1.5 segundos
+    setInterval(createFirework, 1500);
+  </script>
+</body>
+</html>
